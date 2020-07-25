@@ -6,7 +6,7 @@
 #container {
     height: 100vh;
     /* width: 150vh; */
-    background-image: url("/img/lifepak.jpg");
+    background-image: url("../img/lifepak.jpg");
     background-size: auto 100%; /*width height*/
     background-repeat: no-repeat;
     background-position: center;
