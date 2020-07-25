@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#container {
+    height: 100vh;
+    /* width: 150vh; */
+    background-image: url("/img/lifepak.jpg");
+    background-size: auto 100%; /*width height*/
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#btnOnOff, #btnEnergyUp, #btnEnergyDown, #btnCharge, #btnShock {
+    position: absolute;
+    border: 1px solid red;
+}
+
+#btnOnOff {
+    right: calc(50vw - 50vh);
+    top: 19.5%;
+    width: 17vh;
+    height: 5%;
+}
+
+#btnEnergyUp {
+    right: calc(50vw - 48vh);
+    top: 24.5%;
+    width: 7vh;
+    height: 5%;
+}
+
+#btnEnergyDown {
+    right: calc(50vw - 41vh);
+    top: 24.5%;
+    width: 7vh;
+    height: 5%;
+}
+
+#btnCharge {
+    right: calc(50vw - 50vh);
+    top: 29.5%;
+    width: 17vh;
+    height: 5%;
+}
+
+#btnShock {
+    right: calc(50vw - 50vh);
+    top: 34.5%;
+    width: 17vh;
+    height: 8%;
+}
