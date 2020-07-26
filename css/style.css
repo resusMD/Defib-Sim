@@ -11,7 +11,7 @@
     background-position: center;
 }
 
-#btnOnOff, #btnEnergyUp, #btnEnergyDown, #btnCharge, #btnShock, #btnFullscreen {
+#btnOnOff, #btnEnergyUp, #btnEnergyDown, #btnCharge, #btnShock, #btnFullscreen, #btnDumpCharge {
     position: absolute;
     border: 1px solid red;
 }
@@ -49,6 +49,13 @@
     top: 34.5%;
     width: 17vh;
     height: 8%;
+}
+
+#btnDumpCharge {
+    right: calc(50vw - 7vh);
+    top: 75%;
+    width: 20vh;
+    height: 17%;
 }
 
 #btnFullscreen {
