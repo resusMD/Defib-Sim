@@ -11,19 +11,16 @@ var btn_fullscreen = document.getElementById("btnFullscreen");
 var doc = document.documentElement;
 var audio = new Audio();
 
-locOrientation = screen.lockOrientation || screen.mozLockOrientation || screen.msLockOrientation || screen.orientation.lock;
-locOrientation('landscape');
-
-function fullscreen(){
-    if (doc.requestFullscreen) {
-        doc.requestFullscreen();
-      } else if (doc.mozRequestFullScreen) { /* Firefox */
-        doc.mozRequestFullScreen();
-      } else if (doc.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-        doc.webkitRequestFullscreen();
-      } else if (doc.msRequestFullscreen) { /* IE/Edge */
-        doc.msRequestFullscreen();
-      }
+function fullscreen() {
+  if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+      locOrientation = screen.lockOrientation || screen.mozLockOrientation || screen.msLockOrientation || screen.orientation.lock;
+      locOrientation('landscape');
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen(); 
+    }
+  }
 }
 
 function playSound(filename){
