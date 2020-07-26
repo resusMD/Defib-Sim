@@ -52,8 +52,11 @@
 }
 
 #btnFullscreen {
-    right: calc(50vw + 38vh);
-    top: 62.5%;
-    width: 15vh;
-    height: 5%;
+    left: 0%;
+    top: 0%;
+}
+
+h1 {
+    font-size: 3rem;
+    color: red;
 }
