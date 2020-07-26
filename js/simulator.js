@@ -1,3 +1,7 @@
+//functionality exit fullscreen
+//loop audio adequately and have it stop
+//charging screen
+
 var btn_on_off = document.getElementById("btnOnOff");
 var btn_energy_up = document.getElementById("btnEnergyUp");
 var btn_energy_down = document.getElementById("btnEnergyDown");
@@ -6,6 +10,9 @@ var btn_discharge = document.getElementById("btnShock");
 var btn_fullscreen = document.getElementById("btnFullscreen");
 var doc = document.documentElement;
 var audio = new Audio();
+
+locOrientation = screen.lockOrientation || screen.mozLockOrientation || screen.msLockOrientation || screen.orientation.lock;
+locOrientation('landscape');
 
 function fullscreen(){
     if (doc.requestFullscreen) {
