@@ -3,7 +3,21 @@ var btn_energy_up = document.getElementById("btnEnergyUp");
 var btn_energy_down = document.getElementById("btnEnergyDown");
 var btn_charge = document.getElementById("btnCharge");
 var btn_discharge = document.getElementById("btnShock");
+var btn_fullscreen = document.getElementById("btnFullscreen");
+var doc = document.documentElement;
 var audio = new Audio();
+
+function fullscreen(){
+    if (doc.requestFullscreen) {
+        doc.requestFullscreen();
+      } else if (doc.mozRequestFullScreen) { /* Firefox */
+        doc.mozRequestFullScreen();
+      } else if (doc.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+        doc.webkitRequestFullscreen();
+      } else if (doc.msRequestFullscreen) { /* IE/Edge */
+        doc.msRequestFullscreen();
+      }
+}
 
 function playSound(filename){
     audio.currentSrc = "";
@@ -30,4 +44,5 @@ btn_on_off.addEventListener("click", function(){performAction("turnon")});
 btn_energy_up.addEventListener("click", function(){performAction("tick")});
 btn_energy_down.addEventListener("click", function(){performAction("tick")});
 btn_charge.addEventListener("click", function(){performAction("charge300J")});
-btn_discharge.addEventListener("click", function(){performAction("prompt")})
+btn_discharge.addEventListener("click", function(){performAction("prompt")});
+btn_fullscreen.addEventListener("click", function(){fullscreen()});
