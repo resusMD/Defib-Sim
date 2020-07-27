@@ -69,14 +69,25 @@ function createBuffers(){
 }
 
 function fullscreen() {
-  if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen();
-      console.log('Entered fullscreen');
-  } else {
-    if (document.exitFullscreen) {
-      document.exitFullscreen(); 
-    }
+  if (doc.requestFullscreen) {
+    doc.requestFullscreen();
+  } else if (doc.mozRequestFullScreen) { /* Firefox */
+    doc.mozRequestFullScreen();
+  } else if (doc.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+    doc.webkitRequestFullscreen();
+  } else if (doc.msRequestFullscreen) { /* IE/Edge */
+    doc.msRequestFullscreen();
   }
+
+
+  // if (!document.fullscreenElement) {
+  //     document.documentElement.requestFullscreen();
+  //     console.log('Entered fullscreen');
+  // } else {
+  //   if (document.exitFullscreen) {
+  //     document.exitFullscreen(); 
+  //   }
+  // }
 }
 
 function initialize(){
