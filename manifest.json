@@ -1,0 +1,7 @@
+{
+    "short_name": "Defib-sim",
+    "name": "Defibrillator simulator",
+    "start_url": "/index.html",
+    "display": "fullscreen",
+    "orientation": "landscape"
+  }
