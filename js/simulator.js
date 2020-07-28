@@ -10,6 +10,7 @@ var btn_fullscreen = document.getElementById("btnFullscreen");
 var btn_dumpCharge = document.getElementById("btnDumpCharge");
 var doc = document.documentElement;
 var consecutiveSounds = false;
+var charging = false;
 
 const promptUrl = 'audio/prompt.mp3';
 const onOffUrl = 'audio/turnon.mp3';
@@ -78,16 +79,6 @@ function fullscreen() {
   } else if (doc.msRequestFullscreen) { /* IE/Edge */
     doc.msRequestFullscreen();
   }
-
-
-  // if (!document.fullscreenElement) {
-  //     document.documentElement.requestFullscreen();
-  //     console.log('Entered fullscreen');
-  // } else {
-  //   if (document.exitFullscreen) {
-  //     document.exitFullscreen(); 
-  //   }
-  // }
 }
 
 function initialize(){
@@ -119,12 +110,16 @@ function playPromptLoop(){
 
 function performAction(buffer){
     if(buffer === charge20JBuffer | buffer === charge200JBuffer | buffer === charge300JBuffer){
-      consecutiveSounds = true;
-      playSound(buffer);
-      source.onended = function(){
-          playPromptLoop();
+      consecutiveSounds = true; //signal that a sound will follow another
+      if(!charging){
+        charging = true; //to prevent that if the charging button is pressed twice, it will start sounding twice. This will result in the charging prompt sounding without it being mutable
+        playSound(buffer);
+        source.onended = function(){
+            playPromptLoop();
+        }
       }
     }else{
+      charging = false;
       consecutiveSounds = false;
       playSound(buffer);
     }
