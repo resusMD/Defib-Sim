@@ -11,7 +11,7 @@
     background-position: center;
 }
 
-#btnOnOff, #btnEnergyUp, #btnEnergyDown, #btnCharge, #btnShock, #btnFullscreen, #btnDumpCharge {
+#btnOnOff, #btnEnergyUp, #btnEnergyDown, #btnCharge, #btnShock, #btnFullscreen, #btnDumpCharge, #onOffCircle {
     position: absolute;
     /* border: 1px solid red; */
 }
@@ -59,8 +59,18 @@
 }
 
 #btnFullscreen {
-    left: 0%;
-    top: 0%;
+    left: 3%;
+    top: 3%;
+}
+
+#onOffCircle {
+    border-radius: 50%;
+    right: calc(50vw - 37.4vh);
+    top: 21.2%;
+    width: 1.5vh;
+    height: 1.5%;
+    background-color: black;
+    opacity: 50%;
 }
 
 h1 {
