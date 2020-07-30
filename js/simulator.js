@@ -23,49 +23,26 @@ const context = new AudioContext();
 var source;
 let promptBuffer, onOffBuffer, clickBuffer, charge20JBuffer, charge200JBuffer, charge300JBuffer;
 
-function createBuffers(){
-  window.fetch(promptUrl)
-    .then(response => response.arrayBuffer())
-    .then(arrayBuffer => context.decodeAudioData(arrayBuffer))
-    .then(audioBuffer => {
-      promptBuffer = audioBuffer;
-  });
-  
-  window.fetch(onOffUrl)
-    .then(response => response.arrayBuffer())
-    .then(arrayBuffer => context.decodeAudioData(arrayBuffer))
-    .then(audioBuffer => {
-      onOffBuffer = audioBuffer;
-  });
-  
-  window.fetch(clickUrl)
-    .then(response => response.arrayBuffer())
-    .then(arrayBuffer => context.decodeAudioData(arrayBuffer))
-    .then(audioBuffer => {
-      clickBuffer = audioBuffer;
-  });
-  
-  window.fetch(charge20JUrl)
-    .then(response => response.arrayBuffer())
-    .then(arrayBuffer => context.decodeAudioData(arrayBuffer))
-    .then(audioBuffer => {
-      charge20JBuffer = audioBuffer;
-  });
-  
-  window.fetch(charge200JUrl)
-    .then(response => response.arrayBuffer())
-    .then(arrayBuffer => context.decodeAudioData(arrayBuffer))
-    .then(audioBuffer => {
-      charge200JBuffer = audioBuffer;
-  });
-  
-  window.fetch(charge300JUrl)
-    .then(response => response.arrayBuffer())
-    .then(arrayBuffer => context.decodeAudioData(arrayBuffer))
-    .then(audioBuffer => {
-      charge300JBuffer = audioBuffer;
-  });
+window.onload = function(){
+  createBuffers();
+}
 
+async function file2Buffer(filepath){
+  //fetches audio file and loads content and returns buffer
+  const response = await fetch(filepath);
+  const arrayBuffer = await response.arrayBuffer();
+  const audioBuffer = await context.decodeAudioData(arrayBuffer);
+  return audioBuffer;
+}
+
+async function createBuffers(){
+  //create buffers for all sounds
+  promptBuffer = await await file2Buffer(promptUrl);
+  onOffBuffer = await file2Buffer(onOffUrl);
+  clickBuffer = await file2Buffer(clickUrl);
+  charge20JBuffer = await file2Buffer(charge20JUrl);
+  charge200JBuffer = await file2Buffer(charge200JUrl);
+  charge300JBuffer = await file2Buffer(charge300JUrl);
   console.log('Audio loaded');
 }
 
@@ -79,11 +56,6 @@ function fullscreen() {
   } else if (doc.msRequestFullscreen) { /* IE/Edge */
     doc.msRequestFullscreen();
   }
-}
-
-function initialize(){
-  createBuffers();
-  fullscreen();
 }
 
 function playSound(buffer){
@@ -131,4 +103,4 @@ btn_energy_down.addEventListener("click", function(){performAction(clickBuffer)}
 btn_charge.addEventListener("click", function(){performAction(charge200JBuffer)});
 btn_discharge.addEventListener("click", function(){performAction(clickBuffer)});
 btn_dumpCharge.addEventListener("click", function(){performAction(clickBuffer)})
-btn_fullscreen.addEventListener("click", function(){initialize()});
+btn_fullscreen.addEventListener("click", function(){fullscreen()});
